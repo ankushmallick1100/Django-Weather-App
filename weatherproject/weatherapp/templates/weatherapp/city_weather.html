@@ -1,0 +1,13 @@
+{% if weather_data %}
+    <h1>{{weather_data.city|capfirst}}</h1>
+    <img src="http://openweathermap.org/img/w/{{weather_data.icon}}.png" alt="{{weather_data.description|capfirst}}">
+    <h2>{{weather_data.temperature}}°C</h2>
+    <p style="font-weight:bold">Feels like {{weather_data.feel_temperature}}°C</p>
+    <p>Condition: {{weather_data.description|capfirst}}</p>
+    <p>Min Temp: {{weather_data.min_temperature}}°C - Max Temp: {{weather_data.max_temperature}}°C</p>
+    <p>Latitude: {{weather_data.lat}} & Longitude: {{weather_data.lon}}</p>
+    <p>Pressure: {{weather_data.pressure}}</p>
+    <p>Humidity: {{weather_data.humidity}}</p>
+    <p>Visibility: {{weather_data.visibility}}</p>
+    <p>Wind Speed: {{weather_data.wind_speed}} in {{weather_data.wind_speed_degree}}°</p>
+{% endif %}

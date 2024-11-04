@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'weatherapp/images/favicon.ico' %}">
+    <link rel="stylesheet" href="{% static 'weatherapp/css/style.css' %}">
+</head>
+
+<body>
+    <form class="form" method="post" action="">
+        {% csrf_token %}
+        <input type="text" name="city1" id="city1" placeholder="Enter First City">
+        <input type="text" name="city2" id="city2" placeholder="Enter Second City">
+        <button type="submit" id="btn">Compare Weather</button>
+    </form>
+
+    <div class="comparison-container">
+        {% if weather_data1 %}
+            <div class="city-container">
+                {% include 'weatherapp/city_weather.html' with weather_data=weather_data1 %}
+            </div>
+        {% endif %}
+
+        {% if weather_data2 %}
+            <div class="city-container">
+                {% include 'weatherapp/city_weather.html' with weather_data=weather_data2 %}
+            </div>
+        {% endif %}
+    </div>
+
+    {% include 'weatherapp/footer.html' %}
+</body>
+</html>
